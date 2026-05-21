@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蔡逸晨 — Yichen Cai</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #FAF9F6;
+      --bg-card:      #FFFFFF;
+      --bg-subtle:    #F4F3EE;
+      --text:         #1A1A18;
+      --text-muted:   #706F6B;
+      --text-light:   #9B9A96;
+      --accent:       #C96642;
+      --accent-dark:  #B05535;
+      --accent-pale:  #F5EBE6;
+      --border:       #E5E2D9;
+      --border-light: #EDEBE3;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,.05);
+      --shadow:       0 2px 8px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.04);
+      --shadow-md:    0 4px 20px rgba(0,0,0,.09), 0 2px 6px rgba(0,0,0,.05);
+      --r:            10px;
+      --r-sm:         6px;
+      --font:         Georgia, 'Times New Roman', serif;
+      --nav-h:        58px;
+      --max-w:        960px;
+      --pad:          max(24px, calc((100% - var(--max-w)) / 2));
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: opacity .15s; }
+    a:hover { opacity: .72; }
+    strong { font-weight: 600; }
+
+    /* ── Lang toggle ── */
+    [data-zh], [data-en] { display: none; }
+    body.zh [data-zh] { display: revert; }
+    body.en [data-en] { display: revert; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(250,249,246,.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 999;
+      display: flex; align-items: center;
+      padding: 0 var(--pad);
+      gap: 6px;
+    }
+
+    .nav-brand {
+      font-weight: 600; font-size: 15px;
+      color: var(--text); letter-spacing: -.02em;
+      margin-right: auto;
+    }
+
+    .nav-link {
+      font-size: 13.5px; font-weight: 400;
+      color: var(--text-muted);
+      padding: 6px 10px; border-radius: var(--r-sm);
+      transition: color .15s, background .15s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--bg-subtle); opacity: 1; }
+
+    .lang-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 13px; border-radius: 100px;
+      border: 1px solid var(--border); background: transparent;
+      font: 500 12px/1 var(--font); color: var(--text-muted);
+      cursor: pointer; transition: all .15s; margin-left: 4px;
+    }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-pale); }
+
+    /* ── Shared layout ── */
+    .section {
+      padding: 60px var(--pad);
+    }
+    .section-alt {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 8px;
+    }
+    .section-heading {
+      font-size: 1.45rem; font-weight: 700;
+      letter-spacing: -.01em; line-height: 1.25;
+      margin-bottom: 32px;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      padding-top: calc(var(--nav-h) + 64px);
+      padding-bottom: 64px;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--accent-pale); color: var(--accent);
+      font-size: 12px; font-weight: 500;
+      padding: 5px 14px; border-radius: 100px;
+      margin-bottom: 20px; letter-spacing: .02em;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+
+    .hero-name {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; letter-spacing: -.01em;
+      line-height: 1.12; color: var(--text);
+      margin-bottom: 6px;
+    }
+    .hero-name-sub {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 400; font-style: italic;
+      color: var(--text-muted); margin-bottom: 22px;
+    }
+
+    .hero-rule {
+      width: 36px; height: 2px;
+      background: var(--accent); border-radius: 2px;
+      margin-bottom: 22px;
+    }
+
+    .hero-bio {
+      font-size: .975rem; color: var(--text-muted);
+      max-width: 580px; line-height: 1.8;
+      margin-bottom: 22px;
+    }
+    .hero-bio a { font-weight: 500; }
+
+    .chip-row {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 28px;
+    }
+    .chip {
+      font-size: 12px; padding: 4px 13px; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--text-muted);
+      background: var(--bg-card); letter-spacing: .01em;
+    }
+
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 10px 22px; border-radius: var(--r-sm);
+      font: 500 13px/1 var(--font); cursor: pointer;
+      border: none; transition: all .15s; text-decoration: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dark); opacity: 1; }
+    .btn-ghost {
+      background: var(--bg-card); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-pale); opacity: 1; }
+
+    /* ── Hero grid ── */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 52px;
+      align-items: start;
+    }
+
+    /* ── News ── */
+    .news-list { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
+    .news-item { display: flex; gap: 16px; align-items: baseline; }
+    .news-date { font-weight: 500; font-variant-numeric: tabular-nums; flex-shrink: 0; width: 85px; color: var(--text-muted); font-size: 14px; }
+    .news-content { line-height: 1.6; color: var(--text); font-size: 14.5px; }
+
+    .sidebar-block { margin-bottom: 24px; }
+    .sidebar-label {
+      font-size: 10.5px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 14px;
+    }
+    .sidebar-item {
+      padding-bottom: 14px; margin-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .sidebar-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .sidebar-item-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
+    .sidebar-item-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── Papers ── */
+    .paper-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .paper-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r);
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1fr 172px;
+      gap: 28px; align-items: start;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .paper-card:hover { box-shadow: var(--shadow-md); border-color: var(--border); }
+
+    .paper-idx {
+      font-size: 11px; font-weight: 600;
+      color: var(--accent); letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+    .paper-title {
+      font-size: .975rem; font-weight: 600;
+      color: var(--text); line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .paper-authors {
+      font-size: 12.5px; color: var(--text-muted);
+      line-height: 1.65; margin-bottom: 10px;
+    }
+    .paper-authors .me { color: var(--text); font-weight: 500; }
+
+    .paper-venue {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11.5px; font-style: italic;
+      color: var(--text-muted); background: var(--bg-subtle);
+      padding: 3px 11px; border-radius: 100px; margin-bottom: 14px;
+    }
+
+    .paper-abstract {
+      font-size: 12.5px; color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .paper-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .paper-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 500;
+      padding: 4px 11px; border-radius: var(--r-sm);
+      border: 1px solid var(--border); color: var(--text-muted);
+      transition: all .15s;
+    }
+    .paper-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-pale); opacity: 1; }
+
+    .paper-thumb {
+      width: 100%; border-radius: var(--r-sm);
+      border: 1px solid var(--border-light);
+      object-fit: cover; display: block;
+    }
+    .paper-thumb-wrap { padding-top: 4px; }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .proj-card {
+      background: var(--bg);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r);
+      padding: 24px;
+      display: flex; flex-direction: column;
+      transition: box-shadow .2s, border-color .2s, transform .2s;
+    }
+    .proj-card:hover { box-shadow: var(--shadow-md); border-color: var(--border); transform: translateY(-2px); }
+
+    .proj-icon {
+      width: 38px; height: 38px;
+      background: var(--accent-pale);
+      border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; margin-bottom: 18px; flex-shrink: 0;
+    }
+    .proj-title {
+      font-size: 13.5px; font-weight: 600;
+      color: var(--text); line-height: 1.45;
+      margin-bottom: 10px;
+    }
+    .proj-desc {
+      font-size: 12.5px; color: var(--text-muted);
+      line-height: 1.75; flex: 1; margin-bottom: 18px;
+    }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .proj-tag {
+      font-size: 11px; padding: 3px 10px; border-radius: 100px;
+      border: 1px solid var(--border-light); color: var(--text-muted);
+      background: var(--bg-card);
+    }
+    .proj-award {
+      font-size: 11px; padding: 3px 10px; border-radius: 100px;
+      background: #FFF7ED; border: 1px solid #FDDBA0; color: #92400E;
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--r);
+      padding: 22px;
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .contact-card:hover { box-shadow: var(--shadow); border-color: var(--border); }
+    .contact-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--accent-pale); border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .contact-label {
+      font-size: 10.5px; font-weight: 600;
+      letter-spacing: .09em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 4px;
+    }
+    .contact-val { font-size: 13px; font-weight: 500; }
+    .contact-val a { color: var(--text); }
+    .contact-val a:hover { color: var(--accent); opacity: 1; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 28px var(--pad);
+      border-top: 1px solid var(--border-light);
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+    }
+    .footer-copy { font-size: 12.5px; color: var(--text-light); }
+
+    /* ── Scroll fade-in ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ── */
+    @media (max-width: 800px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .paper-card { grid-template-columns: 1fr; }
+      .paper-thumb-wrap { display: none; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      :root { --pad: 18px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body class="en">
+
+<nav>
+  <span class="nav-brand" id="r-nav-brand"></span>
+  <a class="nav-link" href="#news"><span data-zh>动态</span><span data-en>News</span></a>
+  <a class="nav-link" href="#papers"><span data-zh>论文</span><span data-en>Papers</span></a>
+  <a class="nav-link" href="#projects"><span data-zh>项目</span><span data-en>Projects</span></a>
+  <a class="nav-link" href="#contact"><span data-zh>联系</span><span data-en>Contact</span></a>
+  <button class="lang-btn" onclick="toggleLang()">
+    <span data-zh>EN</span><span data-en>中文</span>
+  </button>
+</nav>
+
+
+<section class="section" id="hero">
+  <div class="hero-grid">
+    <div id="r-hero-left"></div>
+    <div id="r-hero-right" class="fade-up" style="transition-delay:.1s;padding-top:4px"></div>
+  </div>
+</section>
+
+<section class="section section-alt" id="news">
+  <p class="eyebrow"><span data-zh>最新动态</span><span data-en>News</span></p>
+  <h2 class="section-heading"><span data-zh>新闻与更新</span><span data-en>Updates</span></h2>
+  <div class="news-list fade-up" id="r-news"></div>
+</section>
+
+<section class="section" id="papers">
+  <p class="eyebrow"><span data-zh>学术论文</span><span data-en>Publications</span></p>
+  <h2 class="section-heading"><span data-zh>研究成果</span><span data-en>Research</span></h2>
+  <div class="paper-list" id="r-papers"></div>
+</section>
+
+<section class="section section-alt" id="projects">
+  <p class="eyebrow"><span data-zh>项目经历</span><span data-en>Projects</span></p>
+  <h2 class="section-heading"><span data-zh>开发与实践</span><span data-en>Work &amp; Practice</span></h2>
+  <div class="projects-grid" id="r-projects"></div>
+</section>
+
+<section class="section" id="contact">
+  <p class="eyebrow"><span data-zh>联系方式</span><span data-en>Contact</span></p>
+  <h2 class="section-heading"><span data-zh>欢迎交流</span><span data-en>Get in touch</span></h2>
+  <div class="contact-grid" id="r-contact"></div>
+</section>
+
+<footer>
+  <span class="footer-copy">
+    <span data-zh>© 2025 蔡逸晨 · 浙江大学</span>
+    <span data-en>© 2025 Yichen Cai · Zhejiang University</span>
+  </span>
+  <span class="footer-copy">
+    <span data-zh>杭州，中国</span><span data-en>Hangzhou, China</span>
+  </span>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  // ── 双语辅助：生成 data-zh / data-en span 对 ──
+  const bi = (o, cls) => {
+    if (!o) return '';
+    const c = cls ? ` class="${cls}"` : '';
+    if (typeof o === 'string') return `<span${c}>${o}</span>`;
+    return `<span${c} data-zh>${o.zh}</span><span${c} data-en>${o.en}</span>`;
+  };
+  const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+
+  function renderAll() {
+    const d = SITE;
+
+    // Nav brand
+    set('r-nav-brand', bi(d.name));
+
+    // Hero 左栏
+    set('r-hero-left', `
+      <div class="hero-badge"><span class="dot"></span>${bi(d.badge)}</div>
+      <div class="hero-name">${bi(d.name)}</div>
+      <div class="hero-name-sub">${bi(d.subtitle)}</div>
+      <div class="hero-rule"></div>
+      <p class="hero-bio">${bi(d.bio)}</p>
+      <div class="chip-row">
+        ${d.interests.map(i => `<span class="chip" data-zh>${i.zh}</span><span class="chip" data-en>${i.en}</span>`).join('')}
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#papers">
+          <span data-zh>查看论文</span><span data-en>View Papers</span>
+        </a>
+      </div>
+    `);
+
+    // Hero 右栏（基本信息）
+    set('r-hero-right', `
+      <div class="sidebar-block">
+        <div class="sidebar-label">${bi({ zh:'教育背景', en:'Education' })}</div>
+        ${d.education.map(e => `
+          <div class="sidebar-item">
+            ${bi(e.school, 'sidebar-item-title')}
+            ${bi(e.degree, 'sidebar-item-sub')}
+          </div>`).join('')}
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">${bi({ zh:'导师', en:'Advisor' })}</div>
+        <div class="sidebar-item">
+          <div class="sidebar-item-title">
+            <a href="${d.advisor.url}" data-zh>${d.advisor.name.zh}</a>
+            <a href="${d.advisor.url}" data-en>${d.advisor.name.en}</a>
+          </div>
+          ${bi(d.advisor.dept, 'sidebar-item-sub')}
+        </div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">${bi({ zh:'联系', en:'Contact' })}</div>
+        <div class="sidebar-item">
+          <div class="sidebar-item-sub"><a href="mailto:${d.contact.email}">${d.contact.email}</a></div>
+          <div class="sidebar-item-sub"><a href="${d.contact.github.url}" target="_blank">${d.contact.github.label}</a></div>
+        </div>
+      </div>
+    `);
+
+    // 最新动态
+    set('r-news', d.news.map(n => `
+      <div class="news-item">
+        <div class="news-date">${n.date}</div>
+        <div class="news-content">${bi(n.content)}</div>
+      </div>
+    `).join(''));
+
+    // 论文
+    set('r-papers', d.papers.map((p, i) => `
+      <div class="paper-card fade-up" ${i ? `style="transition-delay:${i*.08}s"` : ''}>
+        <div>
+          <div class="paper-idx">${String(i + 1).padStart(2, '0')}</div>
+          <div class="paper-title">${p.title}</div>
+          <div class="paper-authors">
+            ${p.authors.map(a => a === p.me ? `<span class="me">${a}</span>` : a).join(', ')}
+          </div>
+          <div class="paper-venue">${p.venue}</div>
+          <div class="paper-abstract">${bi(p.abstract)}</div>
+          <div class="paper-links">
+            ${p.links.map(l => {
+              const label = l.label
+                ? l.label
+                : `<span data-zh>${l.zh}</span><span data-en>${l.en}</span>`;
+              return `<a class="paper-link" href="${l.url}" target="_blank">${l.icon ? l.icon + ' ' : ''}${label}</a>`;
+            }).join('')}
+          </div>
+        </div>
+        <div class="paper-thumb-wrap">
+          <img class="paper-thumb" src="${p.image}" alt="${p.title}">
+        </div>
+      </div>`).join(''));
+
+    // 项目
+    set('r-projects', d.projects.map((p, i) => `
+      <div class="proj-card fade-up" ${i ? `style="transition-delay:${i*.07}s"` : ''}>
+        <div class="proj-icon">${p.icon}</div>
+        <div class="proj-title">${bi(p.title)}</div>
+        <p class="proj-desc">${bi(p.desc)}</p>
+        <div class="proj-tags">
+          ${p.tags.map(t => `<span class="proj-tag" data-zh>${t.zh}</span><span class="proj-tag" data-en>${t.en}</span>`).join('')}
+          ${p.award ? `<span class="proj-award" data-zh>${p.award.zh}</span><span class="proj-award" data-en>${p.award.en}</span>` : ''}
+        </div>
+      </div>`).join(''));
+
+    // 联系
+    set('r-contact', `
+      <div class="contact-card fade-up">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val"><a href="mailto:${d.contact.email}">${d.contact.email}</a></div>
+        </div>
+      </div>
+      <div class="contact-card fade-up" style="transition-delay:.07s">
+        <div class="contact-icon">
+          <img src="src/light/github.png" alt="GitHub" style="width:20px;height:20px;object-fit:contain;opacity:.75">
+        </div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-val"><a href="${d.contact.github.url}" target="_blank">${d.contact.github.label}</a></div>
+        </div>
+      </div>
+      <div class="contact-card fade-up" style="transition-delay:.14s">
+        <div class="contact-icon">🔬</div>
+        <div>
+          <div class="contact-label">ORCID</div>
+          <div class="contact-val"><a href="${d.contact.orcid.url}" target="_blank">${d.contact.orcid.label}</a></div>
+        </div>
+      </div>
+    `);
+  }
+
+  // ── 语言切换 ──
+  function toggleLang() {
+    document.body.classList.toggle('zh');
+    document.body.classList.toggle('en');
+    document.documentElement.lang = document.body.classList.contains('en') ? 'en' : 'zh-CN';
+  }
+
+  // ── 初始化 ──
+  renderAll();
+
+  // 滚动淡入（renderAll 之后再绑定，确保元素已存在）
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
