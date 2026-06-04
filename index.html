@@ -203,6 +203,15 @@
     .news-date { font-weight: 500; font-variant-numeric: tabular-nums; flex-shrink: 0; width: 85px; color: var(--text-muted); font-size: 14px; }
     .news-content { line-height: 1.6; color: var(--text); font-size: 14.5px; }
 
+    .hero-news {
+      max-width: 680px;
+      margin-top: 56px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-light);
+      scroll-margin-top: calc(var(--nav-h) + 18px);
+    }
+    .hero-news .section-heading { margin-bottom: 24px; }
+
     .sidebar-block { margin-bottom: 24px; }
     .sidebar-label {
       font-size: 10.5px; font-weight: 600;
@@ -404,12 +413,6 @@
   </div>
 </section>
 
-<section class="section section-alt" id="news">
-  <p class="eyebrow"><span data-zh>最新动态</span><span data-en>News</span></p>
-  <h2 class="section-heading"><span data-zh>新闻与更新</span><span data-en>Updates</span></h2>
-  <div class="news-list fade-up" id="r-news"></div>
-</section>
-
 <section class="section" id="papers">
   <p class="eyebrow"><span data-zh>学术论文</span><span data-en>Publications</span></p>
   <h2 class="section-heading"><span data-zh>研究成果</span><span data-en>Research</span></h2>
@@ -471,6 +474,11 @@
         <a class="btn btn-primary" href="#papers">
           <span data-zh>查看论文</span><span data-en>View Papers</span>
         </a>
+      </div>
+      <div class="hero-news fade-up" id="news">
+        <p class="eyebrow"><span data-zh>最新动态</span><span data-en>News</span></p>
+        <h2 class="section-heading"><span data-zh>新闻与更新</span><span data-en>Updates</span></h2>
+        <div class="news-list" id="r-news"></div>
       </div>
     `);
 
