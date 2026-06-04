@@ -102,7 +102,7 @@ const SITE = {
     },
     {
       title:   "Seeing Eye to Eye: Enabling Cognitive Alignment Through Shared First-Person Perspective in Human-AI Collaboration",
-      authors: ["Yichen Cai", "Zhuyu Teng", "Pei Chen", "Yichen Cai", "Ruoqing Lu", "Zhaoqu Jiang", "Jiayang Li", "Weitao You", "Lingyun Sun"],
+      authors: ["Zhuyu Teng", "Yichen Cai", "Pei Chen", "Yichen Cai", "Ruoqing Lu", "Zhaoqu Jiang", "Jiayang Li", "Weitao You", "Lingyun Sun"],
       me:      "Yichen Cai",
       venue:   "ACM CHI 2026",
       abstract: {
