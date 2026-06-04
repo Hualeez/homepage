@@ -60,8 +60,8 @@ const SITE = {
     {
       date: "2026.05",
       content: {
-        zh: "论文 <em>ThinkPersona: Thinking with Persona Graphs for Faithful Individualized Role-Playing</em> 与 <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em> 被 ACL 2026 主会录用，其中 <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em> 获选 Oral！🎇",
-        en: "Two papers, <em>ThinkPersona: Thinking with Persona Graphs for Faithful Individualized Role-Playing</em> and <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em>, were accepted to the ACL 2026 Main Conference — <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em> selected for Oral presentation! 🎇"
+        zh: "论文 <em>ThinkPersona: Thinking with Persona Graphs for Faithful Individualized Role-Playing</em> 与 <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em> 被 ACL 2026 主会录用，其中 <em>IEvoAgent</em> 获选 Oral！🎇",
+        en: "Two papers, <em>ThinkPersona: Thinking with Persona Graphs for Faithful Individualized Role-Playing</em> and <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em>, were accepted to the ACL 2026 Main Conference — <em>IEvoAgent</em> selected for Oral presentation! 🎇"
       }
     },
     {
