@@ -60,15 +60,15 @@ const SITE = {
     {
       date: "2026.05",
       content: {
-        zh: "论文 ThinkPersona 与 IEvoAgent 被 ACL 2026 主会录用，其中 IEvoAgent 获选 Oral！🎇",
-        en: "Two papers, ThinkPersona and IEvoAgent, were accepted to the ACL 2026 Main Conference — IEvoAgent selected for Oral presentation! 🎇"
+        zh: "论文 <em>ThinkPersona: Thinking with Persona Graphs for Faithful Individualized Role-Playing</em> 与 <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em> 被 ACL 2026 主会录用，其中 <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em> 获选 Oral！🎇",
+        en: "Two papers, <em>ThinkPersona: Thinking with Persona Graphs for Faithful Individualized Role-Playing</em> and <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em>, were accepted to the ACL 2026 Main Conference — <em>IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback</em> selected for Oral presentation! 🎇"
       }
     },
     {
       date: "2026.02",
       content: {
-        zh: "论文 Seeing Eye to Eye 被人机交互顶会 ACM CHI 2026 录用！",
-        en: "Our paper Seeing Eye to Eye has been accepted to ACM CHI 2026!"
+        zh: "论文 <em>Seeing Eye to Eye: Enabling Cognitive Alignment Through Shared First-Person Perspective in Human-AI Collaboration</em> 被人机交互顶会 ACM CHI 2026 录用！",
+        en: "Our paper <em>Seeing Eye to Eye: Enabling Cognitive Alignment Through Shared First-Person Perspective in Human-AI Collaboration</em> has been accepted to ACM CHI 2026!"
       }
     }
   ],
