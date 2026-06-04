@@ -184,6 +184,19 @@
       align-items: start;
     }
 
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1.18;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: var(--r);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+      background: var(--bg-subtle);
+    }
+
     /* ── News ── */
     .news-list { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
     .news-item { display: flex; gap: 16px; align-items: baseline; }
@@ -461,6 +474,7 @@
 
     // Hero 右栏（基本信息）
     set('r-hero-right', `
+      <img class="profile-photo" src="${d.profile.image}" alt="${d.profile.alt}">
       <div class="sidebar-block">
         <div class="sidebar-label">${bi({ zh:'教育背景', en:'Education' })}</div>
         ${d.education.map(e => `
@@ -471,19 +485,20 @@
       </div>
       <div class="sidebar-block">
         <div class="sidebar-label">${bi({ zh:'导师', en:'Advisor' })}</div>
-        <div class="sidebar-item">
-          <div class="sidebar-item-title">
-            <a href="${d.advisor.url}" data-zh>${d.advisor.name.zh}</a>
-            <a href="${d.advisor.url}" data-en>${d.advisor.name.en}</a>
-          </div>
-          ${bi(d.advisor.dept, 'sidebar-item-sub')}
-        </div>
+        ${d.advisors.map(a => `
+          <div class="sidebar-item">
+            <div class="sidebar-item-title">
+              <a href="${a.url}" data-zh>${a.name.zh}</a>
+              <a href="${a.url}" data-en>${a.name.en}</a>
+            </div>
+            ${bi(a.dept, 'sidebar-item-sub')}
+          </div>`).join('')}
       </div>
       <div class="sidebar-block">
         <div class="sidebar-label">${bi({ zh:'联系', en:'Contact' })}</div>
         <div class="sidebar-item">
-          <div class="sidebar-item-sub"><a href="mailto:${d.contact.email}">${d.contact.email}</a></div>
-          <div class="sidebar-item-sub"><a href="${d.contact.github.url}" target="_blank">${d.contact.github.label}</a></div>
+          <div class="sidebar-item-sub">Email: <a href="mailto:${d.contact.email}">${d.contact.email}</a></div>
+          <div class="sidebar-item-sub">GitHub: <a href="${d.contact.github.url}" target="_blank">${d.contact.github.label}</a></div>
         </div>
       </div>
     `);

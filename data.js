@@ -9,10 +9,11 @@ const SITE = {
   name:     { zh: "蔡逸晨",  en: "Yichen Cai" },
   badge:    { zh: "浙江大学 · 计算机学院",      en: "Zhejiang University · CCST" },
   subtitle: { zh: "Yichen Cai",                en: "PhD Student in AI & HCI Researcher" },
+  profile:  { image: "src/profile.jpg", alt: "Yichen Cai" },
 
   bio: {
-    zh: `你好，我是蔡逸晨，现于浙江大学攻读人工智能博士研究生，师从 <a href="https://person.zju.edu.cn/sly/623051.html">孙凌云</a> 教授。本科毕业于浙江大学竺可桢学院图灵班（人工智能）。研究聚焦于大语言模型、智能体与人机交互，致力于将 LLM 与创意设计工作流深度整合，探索 AI 如何在概念设计阶段为设计师提供更有温度、更具参与感的协同体验。研究成果发表于 JMD, JED, CHI, ACL 等顶级会议和期刊。`,
-    en: `Hi, I'm Yichen Cai, a Ph.D. student in Artificial Intelligence at Zhejiang University, advised by Prof.&nbsp;<a href="https://person.zju.edu.cn/sly/623051.html">Lingyun Sun</a>. Graduated from Turing Class, Chu Kochen Honors College (AI). My research sits at the intersection of agentic systems, large language models, industrial design, and HCI. I focus on deeply integrating LLMs into creative design workflows, making AI an engaging collaborator during conceptual design. Work published in venues like JMD, JED, CHI, and ACL.`,
+    zh: `你好，我是蔡逸晨，现于浙江大学攻读人工智能博士研究生，师从 <a href="https://person.zju.edu.cn/sly/623051.html">孙凌云</a> 教授与<a href="https://person.zju.edu.cn/chenpei">陈培</a>老师。本科毕业于浙江大学竺可桢学院图灵班（人工智能）。研究聚焦于大语言模型、智能体与人机交互，致力于将 LLM 与创意设计工作流深度整合，探索 AI 如何在概念设计阶段为设计师提供更有温度、更具参与感的协同体验。研究成果发表于 JMD, JED, CHI, ACL 等顶级会议和期刊。`,
+    en: `Hi, I'm Yichen Cai, a Ph.D. student in Artificial Intelligence at Zhejiang University, advised by Prof.&nbsp;<a href="https://person.zju.edu.cn/sly/623051.html">Lingyun Sun</a> and Dr.&nbsp;<a href="https://person.zju.edu.cn/chenpei">Pei Chen</a>. Graduated from Turing Class, Chu Kochen Honors College (AI). My research sits at the intersection of agentic systems, large language models, industrial design, and HCI. I focus on deeply integrating LLMs into creative design workflows, making AI an engaging collaborator during conceptual design. Work published in venues like JMD, JED, CHI, and ACL.`,
   },
 
   interests: [
@@ -29,16 +30,23 @@ const SITE = {
       degree: { zh: "人工智能 博士 2024—至今", en: "Ph.D. Artificial Intelligence · 2024–present" },
     },
     {
-      school: { zh: "浙大竺可桢学院图灵班",  en: "Turing Class, Chu Kochen College" },
+      school: { zh: "浙大竺可桢学院图灵班",  en: "Zhejiang University, Chu Kochen College" },
       degree: { zh: "人工智能 学士 2020—2024", en: "B.E. Artificial Intelligence · 2020–2024" },
     },
   ],
 
-  advisor: {
-    name: { zh: "孙凌云 教授", en: "Prof. Lingyun Sun" },
-    url:  "https://person.zju.edu.cn/sly/623051.html",
-    dept: { zh: "浙江大学计算机学院", en: "College of CS, ZJU" },
-  },
+  advisors: [
+    {
+      name: { zh: "孙凌云 教授", en: "Prof. Lingyun Sun" },
+      url:  "https://person.zju.edu.cn/sly/623051.html",
+      dept: { zh: "浙江大学计算机学院", en: "College of Computer Science and Technology, ZJU" },
+    },
+    {
+      name: { zh: "陈培 老师", en: "Dr. Pei Chen" },
+      url:  "https://person.zju.edu.cn/chenpei",
+      dept: { zh: "浙江大学人工智能学院", en: "College of Artificial Intelligence, ZJU" },
+    },
+  ],
 
   // ── 联系方式 ───────────────────────────────────────────
   contact: {
@@ -70,7 +78,7 @@ const SITE = {
   papers: [
     {
       title:   "IEvoAgent: Evolving Conversational Agent based on User Implicit Feedback",
-      authors: ["Yichen Cai", "Jiayang Li", "Junyuan Qiu", "Jingya Guo", "Weitao You", "Changyuan Yang", "Lingyun Sun"],
+      authors: ["Yichen Cai", "Jiayang Li", "Junyuan Qiu", "Jingya Guo", "Weitao You", "Changyuan Yang", "Lingyun Sun","Pei Chen"],
       me:      "Yichen Cai",
       venue:   "ACL 2026 Main Conference (Oral)",
       abstract: {
@@ -106,7 +114,7 @@ const SITE = {
     },
     {
       title:   "An LLM-based Multi-Agent System to Assist Early Stage Product Design and Evaluation",
-      authors: ["Pei Chen", "Yichen Cai", "et al."],
+      authors: ["Pei Chen", "Yichen Cai", "Zihong Zhou", "Jiayi Yao", "Jiayang Li", "Weitao You", "Lingyun Sun"],
       me:      "Yichen Cai",
       venue:   "Journal of Engineering Design, 2026",
       abstract: {
