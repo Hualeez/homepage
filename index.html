@@ -451,6 +451,8 @@
 
   function renderAll() {
     const d = SITE;
+    const advisors = d.advisors || (d.advisor ? [d.advisor] : []);
+    const profile = d.profile || {};
 
     // Nav brand
     set('r-nav-brand', bi(d.name));
@@ -474,7 +476,7 @@
 
     // Hero 右栏（基本信息）
     set('r-hero-right', `
-      <img class="profile-photo" src="${d.profile.image}" alt="${d.profile.alt}">
+      ${profile.image ? `<img class="profile-photo" src="${profile.image}" alt="${profile.alt || 'Profile photo'}">` : ''}
       <div class="sidebar-block">
         <div class="sidebar-label">${bi({ zh:'教育背景', en:'Education' })}</div>
         ${d.education.map(e => `
@@ -485,7 +487,7 @@
       </div>
       <div class="sidebar-block">
         <div class="sidebar-label">${bi({ zh:'导师', en:'Advisor' })}</div>
-        ${d.advisors.map(a => `
+        ${advisors.map(a => `
           <div class="sidebar-item">
             <div class="sidebar-item-title">
               <a href="${a.url}" data-zh>${a.name.zh}</a>
