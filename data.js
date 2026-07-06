@@ -21,6 +21,7 @@ const SITE = {
     { zh: "大语言模型",  en: "Large Language Models" },
     { zh: "人机交互",    en: "Human-Computer Interaction" },
     { zh: "设计",    en: "Design" },
+    { zh: "人为中心的人工智能",    en: "Human-Centered Artificial Intelligence" },
   ],
 
   // ── 教育背景 ───────────────────────────────────────────
@@ -85,7 +86,7 @@ const SITE = {
         zh: "针对现有对话智能体依赖显式反馈、难以适应用户偏好动态变化的局限，提出 IEvoAgent 框架，通过挖掘用户后续行为中蕴含的隐式反馈信号实现智能体的自进化。基于 21 万轮真实对话数据揭示了「响应类型—隐式反馈」的结构化依赖规律，并构建两阶段优化机制：离线阶段以 KTO 算法进行偏好对齐，在线推理阶段通过动态反馈分布矩阵估算预期奖励，驱动系统提示词的实时迭代与策略演化。实验表明该方法在多个基准上显著优于开源基线，有效提升多轮对话的动态对齐能力与响应质量。",
         en: "Addresses the limitation of conversational agents that rely on explicit feedback and struggle to adapt to evolving user preferences. IEvoAgent achieves self-evolution by mining implicit feedback signals from users' subsequent behaviors. Based on 210K rounds of real dialogue data, it reveals structured 'response-type to implicit-feedback' dependencies and builds a two-stage optimization mechanism: offline KTO-based preference alignment, and online estimation of expected rewards via a dynamic feedback distribution matrix to iteratively evolve the system prompt. Experiments show significant gains over open-source baselines in dynamic alignment and response quality.",
       },
-      links: [{ label: "GitHub",         icon: "⌥",   url: "https://github.com/Hualeez/IEvoAgent" },],
+      links: [{ zh: "论文", en: "Paper", icon: "📄", url:"https://aclanthology.org/2026.acl-long.441/"}, { label: "GitHub",         icon: "⌥",   url: "https://github.com/Hualeez/IEvoAgent" },],
       image: "components/papers/papers_fig/paper.6.1.png",
     },
     {
@@ -97,7 +98,7 @@ const SITE = {
         zh: "针对角色扮演语言模型回复不忠实、前后冲突的问题，构建基于真实访谈数据微调的采访者智能体以生成上下文相关提问，并利用 1201 个视频资料构建人物背景知识图谱，驱动被访者智能体通过图谱查询实现忠实问答。基于此生成的 23401 组「问题—推理—回答」三元组数据集进一步微调出高保真角色扮演模型，有效提升了角色一致性。",
         en: "Tackles unfaithful and self-contradictory responses in role-playing language models. ThinkPersona fine-tunes an interviewer agent on real interview data to generate context-relevant questions, and builds persona background knowledge graphs from 1,201 video sources, driving an interviewee agent to answer faithfully via graph queries. The resulting dataset of 23,401 'question-reasoning-answer' triplets is used to fine-tune a high-fidelity role-playing model, substantially improving persona consistency.",
       },
-      links: [{ label: "GitHub",         icon: "⌥",   url: "https://github.com/Hualeez/ThinkPersona" },],
+      links: [{ zh: "论文", en: "Paper", icon: "📄", url:"https://aclanthology.org/2026.acl-long.449/"}, { label: "GitHub",         icon: "⌥",   url: "https://github.com/Hualeez/ThinkPersona" },],
       image: "components/papers/papers_fig/paper.5.1.png",
     },
     {
