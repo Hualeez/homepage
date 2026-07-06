@@ -12,8 +12,8 @@ const SITE = {
   profile:  { image: "src/profile.jpg", alt: "Yichen Cai" },
 
   bio: {
-    zh: `你好，我是蔡逸晨，现于浙江大学攻读人工智能博士研究生，师从 <a href="https://person.zju.edu.cn/sly/623051.html">孙凌云</a> 教授与<a href="https://person.zju.edu.cn/chenpei">陈培</a>老师。本科毕业于浙江大学竺可桢学院图灵班（人工智能）。研究聚焦于大语言模型、智能体与人机交互，致力于将 LLM 与创意设计工作流深度整合，探索 AI 如何在概念设计阶段为设计师提供更有温度、更具参与感的协同体验。研究成果发表于 JMD, JED, CHI, ACL 等顶级会议和期刊。`,
-    en: `Hi, I'm Yichen Cai, a Ph.D. student in Artificial Intelligence at Zhejiang University, advised by Prof.&nbsp;<a href="https://person.zju.edu.cn/sly/623051.html">Lingyun Sun</a> and AP.&nbsp;<a href="https://person.zju.edu.cn/chenpei">Pei Chen</a>. Graduated from Turing Class, Chu Kochen Honors College (AI). My research sits at the intersection of agentic systems, large language models, industrial design, and HCI. I focus on deeply integrating LLMs into creative design workflows, making AI an engaging collaborator during conceptual design. Work published in venues like JMD, JED, CHI, and ACL.`,
+    zh: `你好，我是蔡逸晨，现于浙江大学攻读人工智能博士研究生，师从 <a href="https://person.zju.edu.cn/sly/623051.html">孙凌云</a> 教授与<a href="https://person.zju.edu.cn/chenpei">陈培</a>老师。本科毕业于浙江大学竺可桢学院图灵班（人工智能）。研究聚焦于大语言模型、智能体、人机交互与以人为中心的 AI 研究。研究成果发表于 JMD, JED, CHI, ACL 等顶级会议和期刊。`,
+    en: `Hi, I'm Yichen Cai, a Ph.D. student in Artificial Intelligence at Zhejiang University, advised by Prof.&nbsp;<a href="https://person.zju.edu.cn/sly/623051.html">Lingyun Sun</a> and AP.&nbsp;<a href="https://person.zju.edu.cn/chenpei">Pei Chen</a>. Graduated from Turing Class, Chu Kochen Honors College (AI). My research focuses on large language models, agentic systems, human computer interaction, and human-centered AI. Work published in venues like JMD, JED, CHI, and ACL.`,
   },
 
   interests: [
